@@ -1,5 +1,6 @@
 <?php
-
+// Contain parameters for http request
+//For security reasons this file should not be exposed to public 
 $domain_name1 = "www.xxxx.com/phptest_phone_xml.php";
 $domain_name2 = "www.xxxx.com/phptest.php";
 $username = "accucomtest";
