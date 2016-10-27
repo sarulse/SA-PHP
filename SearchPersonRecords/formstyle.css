@@ -1,4 +1,6 @@
-	h2{
+/* Formatting style for form and results page */
+
+h2{
         text-align:center;
         color: rgb(0,0,255);
         margin-left: 50px;
