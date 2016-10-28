@@ -1,5 +1,5 @@
 # SA-PHP
-Contains Sample PHP Projects
+Contain Sample PHP Projects
 
 Project 1: Search for Person records using a valid US phone number. 
-            Browse the folder: "SearchPersonRecords" for more details
+            Browse the folder: "SearchPersonRecords" for more details.
