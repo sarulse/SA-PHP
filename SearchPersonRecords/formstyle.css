@@ -4,34 +4,31 @@ h2{
         text-align:center;
         color: rgb(0,0,255);
         margin-left: 50px;
-    }
+}
 	
-	h4{
+h4{
 		text-align:center;
-		
-	}
-	
-    input {
+}
+input {
          width : 150px;
          margin: auto;
 
         -webkit-box-sizing: border-box; /* For legacy WebKit based browsers */
         -moz-box-sizing: border-box; /* For legacy (Firefox <29) Gecko based browsers */
         box-sizing: border-box;
-   }
-   
-   form {
+}
+form {
 	   	   
 	   color : blue;
 	   text-align: center;
-   }
-   fieldset{
+}
+fieldset{
 	   
 		width: 400px;
 		margin:auto;
-	}
+}
 	
-   #displayDiv {       
+#displayDiv {       
         text-align:left;
-        /*margin-left:30px;*/
-   }
+       
+}
