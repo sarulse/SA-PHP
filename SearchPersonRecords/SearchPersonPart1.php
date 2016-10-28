@@ -1,5 +1,4 @@
 <?php
-
 /* 
    Search for a person record using a valid US phone number
    Results of the file can be viewed at 
@@ -7,7 +6,6 @@
 
 */
 ?>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -28,44 +26,34 @@
 <link rel="stylesheet" type="text/css" href="formstyle.css">
 </head>
 <body>
-<p>
-            <form name="personSearch"  method="POST"  accept-charset="UTF-8" target="_self">
-                <fieldset align="center">
+       <form name="personSearch"  method="POST"  accept-charset="UTF-8" target="_self">
+           	<fieldset align="center">
                     <legend>Search Person Record </legend>
                     <br/>
                     Enter Phone Number to search a person:<br>
                     <input type="tel" name="phone" id="tel" required >
                     <br/><br/>
-                </fieldset>
-                <br/>
-                <input type="submit" value="Submit" onclick=" return validatePhone()">
-            </form>
-</p>
-
+             </fieldset>
+             <br/>
+             <input type="submit" value="Submit" onclick=" return validatePhone()">
+      </form>
 <?php
-	
-	//Get the Phone Number
+	/Get the Phone Number
 	function getPhoneNo () {
         $ph_num = '';
 		
 		if(isset($_POST['phone']))
 		{	
 			$phone_num = $_POST['phone'];
-			//echo "Entered phone number: ".$ph_number."</br>";
-
 			//remove special characters from phone_number
 			$ph_num = preg_replace('/[^A-Za-z0-9\$]/', '', $phone_num);
-						
 		}
 		return $ph_num;		
 	}
-
-
 	// Create XML Request
 	function xmlRequest() {
 		
-		include_once("urlParams.php");
-		
+		include_once("urlParams.php");		
 		try {
 				$phone_number = getPhoneNo();
 				// Check number of digits in the phone number
@@ -76,7 +64,6 @@
 		catch(Exception $e) {
 				echo "Error in the phone number entered:</br> ".$e->getMessage();
 		}
-					
 		$area_code = substr($phone_number,0,3);
 		//echo "Area Code: ".$area_code."\n";
 		$tel_number = substr($phone_number,3,7);
@@ -108,9 +95,6 @@
 		curl_close($curl);
 		return $data;
 	}
-
-
-
 	//Print Search Results
 	function printSearchResults() {
 		$phone_number = getPhoneNo();
@@ -162,13 +146,9 @@
 							echo "<h4>--------------------------------------------------------------------</h4>";
 							echo "<h4>Number of Matched Records: ".$match_found."</h4>";
 			}
-             
-			
-		}
-
+      	}
 	}
-	printSearchResults();
-	
+	printSearchResults();	
 ?>
 </body>
 </html>
