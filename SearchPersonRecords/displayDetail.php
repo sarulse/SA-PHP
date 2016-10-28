@@ -35,7 +35,7 @@
 		
 		return $name;			
 	}
-		//Create another xml request
+	//Create another xml request
 	function xmlRequest() {		
 		include_once("urlParams.php");
 		$params = getParams();
@@ -73,7 +73,7 @@
 		curl_close($curl);
 		return $data;
 	}
-   	 //Get the xml data	
+   	//Get the xml data	
 	function getData() {		
 		$xml_data = xmlRequest();	
 		$params = getParams();
@@ -124,6 +124,7 @@
 			}		
 		
 	}
+	//print Records
    	function printRecord($outputArray){		
 		$num_match = count($outputArray);
 		//echo "Number of Matches: ".$num_match;
@@ -159,18 +160,16 @@
 					<div class="showDetail<?php echo $counter?>">               
 				
 				<?php              
-					displayDetail($outputArray,$counter);
-							 
+					displayDetail($outputArray,$counter);							 
 				 ?>
 				</div>
-				</div>
-						
+				</div>						
 				<?php
 			}  
 			
 		}
 				
-	}// end of function 
+	} 
 	//Display detail of each record
 	 function displayDetail($match_array, $i){		 
 	   
