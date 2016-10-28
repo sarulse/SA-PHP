@@ -146,7 +146,7 @@
 							echo "<h4>--------------------------------------------------------------------</h4>";
 							echo "<h4>Number of Matched Records: ".$match_found."</h4>";
 			}
-      	}
+      		}
 	}
 	printSearchResults();	
 ?>
