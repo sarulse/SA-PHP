@@ -3,9 +3,7 @@
   saves requests and responses to a MYSQL table
   Can be viewed at http://sarulsel.us/PHPProjects/SearchPersonPart2.php
 */
-
 ?>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -26,28 +24,24 @@
 <link rel="stylesheet" type="text/css" href="formstyle.css">
 </head>
 <body>
-<p>
-            <form name="personSearch"  method="POST"  accept-charset="UTF-8" target="_self">
-                <fieldset>
+<body>
+       <form name="personSearch"  method="POST"  accept-charset="UTF-8" target="_self">
+           	<fieldset align="center">
                     <legend>Search Person Record </legend>
                     <br/>
                     Enter Phone Number to search a person:<br>
                     <input type="tel" name="phone" id="tel" required >
                     <br/><br/>
-                </fieldset>
-                <br/>
-                <input type="submit" value="Submit" onclick="return validatePhone()">
-            </form>
-</p>
+            	 </fieldset>
+             	<br/>
+             	<input type="submit" value="Submit" onclick=" return validatePhone()">
+	</form>
 
 
-<?php
-	
+<?php	
 	error_reporting(0);
-
 	//Get the entered Phone Number from the Form
 	function getPhoneNo () {
-		
 		if(isset($_POST['phone']))
 		{	
 			$phone_num = $_POST['phone'];
@@ -58,13 +52,9 @@
 		}	
 		return $ph_num;
 	}
-
-
 	// Create XML Request
-	function xmlRequest() {
-		
+	function xmlRequest() {		
 		include_once("urlParams.php");
-		
 		try {
 				$phone_number = getPhoneNo();
 				// Check number of digits in the phone number
@@ -76,17 +66,13 @@
 				echo "Error in the phone number entered:</br> ".$e->getMessage();
 		}
 		$area_code = substr($phone_number,0,3);
-		//echo "Area Code: ".$area_code."\n";
 		$tel_number = substr($phone_number,3,7);
-		//echo "Tel Number: ".$tel_number."<br>";
-		
 		// Get cURL resource
 		$curl = curl_init();	
 		$url = $urlParams1.'&areacode=';
 		$url.= $area_code;
 		$url.= '&phone=';
-		$url.= $tel_number;
-		
+		$url.= $tel_number;		
 		// Set some options - 
 		curl_setopt_array($curl, array(
 					CURLOPT_RETURNTRANSFER => 1,
@@ -107,10 +93,7 @@
 		curl_close($curl);
 		return $data;
 	}
-
-    
-
-	//Print Search Results
+  	//Print Search Results
 	function printSearchResults() {
 		$phone_number = getPhoneNo();
 		$xml_data = xmlRequest();
@@ -180,9 +163,8 @@
 						//insert values into the table
 						$query = $connect->query($insert);
 					}
-							  
 					if (!$query) {
-								echo "Error: ".$insert. "<br>". $connect->error."Error #".$connect->errno." ".$connect->sqlstate;
+							echo "Error: ".$insert. "<br>". $connect->error."Error #".$connect->errno." ".$connect->sqlstate;
 					} else {
 							echo "<h4>XML Request is saved to database</h4>";
 							
@@ -190,8 +172,7 @@
 					}
 					
 				}    
-				//Saving search results to a mysql table
-									 
+				//Saving search results to a mysql table									 
 				//create PersonSearchResults Table
 				$drop1 = "DROP TABLE IF EXISTS PersonSearchResults;";
 				$create1 = "CREATE TABLE  IF NOT EXISTS PersonSearchResults
@@ -220,13 +201,12 @@
 				
 				echo "<h2>"."Search Results</h2>";
 				echo "<h4>Number of matched records: ".$num_results."<br/></h4>";
-                if ($num_results == 0){
-                    echo "<h4>No records are saved to database<br/></h4>";
-                }
+              			if ($num_results == 0){
+                    			echo "<h4>No records are saved to database<br/></h4>";
+              			}
 				echo "<h4>--------------------------------------------------------------------<br/></h4>";
 			   
-				//$rows = $result->fetch_array(MYSQLI_ASSOC);
-                echo "<h4>";
+				echo "<h4>";
 				while ($row = $result->fetch_assoc()) 
 				{
 					?>
@@ -263,22 +243,22 @@
 				?>
 				</a>
 				<?php
-                if ($query1) 
-				{
+             				 if ($query1) 
+					{
 							echo "--------------------------------------------------------------------<br/>";
 							echo "<h4>Person search results are saved to database</h4>"."<br/>";								 
-				}
-				echo "</h4>";
+					}
+					echo "</h4>";
 				mysqli_free_result($result);        	
 				$connect->close();
 			}
 		}
 
 	}
-    $ph_no = getPhoneNo();
-    if (!(empty($ph_no))) {
+    	$ph_no = getPhoneNo();
+    	if (!(empty($ph_no))) {
             printSearchResults();
-    }
+	}
 
 ?>
 </body>
