@@ -1,5 +1,6 @@
 <?php
 // Connection parameters for Database
+//For Security reasons this file should not be exposed to public
 $dbhostname = "xxxxxxxxxxxxxxxxxxxxxxxresource.com";
 $dbname = "xxxxxxxxxx";
 $dbusername = "xxxxxxxxxxxx";
