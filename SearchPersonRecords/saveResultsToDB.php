@@ -1,12 +1,10 @@
 <?php
-
 /* save Search Results to a MYSQL table  
  For XML Request 2: 
  saves Person Records to "PersonRecords" table
  saves Search Results to "PersonRecordSearchResults" table 
  */
 ?>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,25 +16,15 @@
         color: rgb(0,0,255);
         margin-left: 50px;
     }
-    
-   #displayDiv {
+    #displayDiv {
        
         text-align:left;
-        /*margin-left:30px;*/
-   }
+    }
 </style>
 </head>
 <body>
 <?php
-
-	error_reporting(E_ALL);
-	//error_reporting(0); 
-	echo "First Name: ", $_GET['firstname'];
-	echo "\tLast Name: ", $_GET['lastname'];
-	echo "\tState: ", $_GET['state'] ."<br/>";
-
-	function getParams() {
-		
+	function getParams() {		
 		$name = array();
 		$fname = $_GET['firstname'];
 		$lname =$_GET['lastname'];
@@ -46,19 +34,15 @@
 		$name['lname']= $lname;
 		$name['state']= $state;
 		
-		return $name;
-		
+		return $name;		
 	}
-
 	//Send Request
-	function xmlRequest() {
-		
+	function xmlRequest() {		
 		include_once("urlParams.php");
 		$params = getParams();
 		$fname = $params['fname'];
 		$lname = $params['lname'];
-		$state = $params['state'];
-	
+		$state = $params['state'];	
 		// Get cURL resource
 		$curl = curl_init();
 		$url = $urlParams2.'&firstname=';
@@ -68,8 +52,6 @@
 		$url.='&city=&state=';
 		$url.=$state;
 		$url.='&zip=&client_reference=test&phone=&housenumber=&streetname=.';
-		//echo $url;
-
 		// Set some options -
 		curl_setopt_array($curl, array(
 			CURLOPT_RETURNTRANSFER => 1,
@@ -90,8 +72,6 @@
 		curl_close($curl);
 		return $data;
 	}
-
-
 	//Get xml data
 	function getData() {		
 		$xml_data = xmlRequest();	
@@ -105,8 +85,7 @@
     			foreach(libxml_get_errors() as $error) {
 					 echo "<br>", $error->message;
 				 }
-				 
-			}
+		}
 		else
 		{
 			    //$count  the no. of records in the xml file
@@ -128,14 +107,11 @@
 				 }
 		    }
 	}  
-
 	//save data from requests to a DB table
-	function saveRecords($recordArray){
-		
+	function saveRecords($recordArray){		
 		$num_records = count($recordArray);		
 		//to make connection to the database
-		include_once('connection.php');
-		
+		include_once('connection.php');		
 		if ($connect)     
 		{
 			//create MYSQL table    	
@@ -167,9 +143,7 @@
 			}
 			else
 			{
-				//echo "Table created successfully<br/>";
 				//On table creation successful insert the records
-				
 				for ($counter=0; $counter<$num_records; $counter++)
 				{
 					$fname = $connect->real_escape_string($recordArray[$counter]->firstname);
@@ -225,8 +199,7 @@
 
 					//insert values into the table
 					$query1 = $connect->query($insert);
-					*/
-                    
+					*/                    
                     //Insert using prepare 
     				$insert = "INSERT INTO PersonRecords (fname,minitial,lname,dob,age,address,city,state,zip,reportDate,phone,relatives,previousAddresses,homeOwner)
 							   VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
@@ -250,22 +223,14 @@
 				}
 					
 			}
-			
-			  
 		}    
-	  
 	}
-
-
-
 	// Retrieve matching records and save that to a DB table
-	function retrieveRecords($conn){	
-        
+	function retrieveRecords($conn){	        
         $params = getParams();
 		$fname = $params['fname'];
 		$lname = $params['lname'];
 		$state = $params['state'];
-		
 		if ($conn)
 		{ 
 			//create search results table;
@@ -288,8 +253,7 @@
 				previousAddresses varchar(1020) NULL,
 				homeOwner varchar(10)NULL,
 				PRIMARY KEY  (id)                   
-			) ENGINE=MyISAM DEFAULT CHARSET=utf8;";     
-			
+			) ENGINE=MyISAM DEFAULT CHARSET=utf8;";  
 			//check if table creation is successful
 			if (!$conn->query($drop1) || !$conn->query($create1))
 			{
@@ -297,25 +261,20 @@
 			}
 			else
 			{
-				//echo "Table created successfully<br/>";        
-			    //Query the database table to retrieve search results   
+				//Query the database table to retrieve search results   
 				$select = "SELECT * FROM PersonRecords where fname = '$fname' AND lname='$lname' AND state='$state';"; 
 				$result= $conn->query($select);
 				$num_results = $result->num_rows;            
-				//echo "<h2>"."Search Results</h2>";
 				echo "<h3>Number of Matching Records: $num_results</h3>";
                 if ($num_results == 0) {
                     echo "No Records are saved to the database<br/>";
                 }
 				echo "--------------------------------------------------------------------<br/>";
-					
 				$personArray= array();			
 				$counter = 0;
 				while ($row = $result->fetch_assoc()) 
 				{
-					
 					//echo $row["fname"]." ".$row["minitial"]." ".$row["lname"]." State ".$row["state"]." Phone: ".$row["phone"];
-													
 					$fname = $row["fname"];
 					$personArray[$counter]->firstname = $fname;
 					//echo $personArray[$counter]->firstname;                
@@ -345,17 +304,13 @@
 					$personArray[$counter]->previousAddresses = $previousAddresses;
 					$homeOwner = $row["homeOwner"];
 					$personArray[$counter]->homeOwner = $homeOwner;
-				
-				   
 					$counter++;											   
 					$insert2 = "INSERT INTO PersonRecordSearchResults (fname,minitial,lname,dob,age,address,city,state,zip,reportDate,phone,relatives,previousAddresses,homeOwner)
 							   VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-					
 					 //Using prepare 
 					 $query2 = $conn->prepare($insert2);                                 
 					 // bind parameters 
 					 $query2->bind_param("ssssssssssssss",$fname,$mname,$lname,$dob,$age,$address,$city,$state,$zip,$reportDate,$phone,$relatives,$previousAddresses,$homeOwner);
-					 
 					 //Execute
 					 $query2->execute();
 					 $query2->close(); 											   
@@ -371,9 +326,7 @@
 			   $conn->close();
 				
 			}
-		
 		} 
-		
 	}
 
 	getData();
