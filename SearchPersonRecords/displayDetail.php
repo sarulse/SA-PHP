@@ -1,5 +1,4 @@
 <?php
-
 /* Show Detailed Search Results when a record is selected*/
 ?>
 <!DOCTYPE html>
@@ -23,13 +22,6 @@
 </head>
 <body>
 <?php
-	error_reporting(E_ALL);
-	//error_reporting(0); 
-
-	echo "First Name: ", $_GET['firstname'];
-	echo "\tLast Name: ", $_GET['lastname'];
-	echo "\tState: ", $_GET['state'] ."<br/>";
-
 	//Get Params from the URL
 	function getParams() {				
 		$name = array();
@@ -43,8 +35,7 @@
 		
 		return $name;			
 	}
-	
-	//Create another xml request
+		//Create another xml request
 	function xmlRequest() {		
 		include_once("urlParams.php");
 		$params = getParams();
@@ -52,7 +43,7 @@
 		$lname = $params['lname'];
 		$state = $params['state'];
         
-        // Get cURL resource
+      		// Get cURL resource
 		$curl = curl_init();
 		$url = $urlParams2.'&firstname=';
 		$url.=$fname;
@@ -61,7 +52,6 @@
 		$url.='&city=&state=';
 		$url.=$state;
 		$url.='&zip=&client_reference=test&phone=&housenumber=&streetname=.';
-		//echo $url;
 		// Set some options - 
 		curl_setopt_array($curl, array(
 			CURLOPT_RETURNTRANSFER => 1,
@@ -69,8 +59,7 @@
 			
 		));
 		// Send the request & save response to $data
-		$data = curl_exec($curl);
-        
+		$data = curl_exec($curl);        
 		if(!$data){
 			//die('Error: "' . curl_error($curl) . '" - Code: ' . curl_errno($curl));
 			exit ("Could not connect to the XML server<br/>");
@@ -84,7 +73,7 @@
 		curl_close($curl);
 		return $data;
 	}
-    //Get the xml data	
+   	 //Get the xml data	
 	function getData() {		
 		$xml_data = xmlRequest();	
 		$params = getParams();
@@ -100,8 +89,7 @@
 		}
 		else
 		{
-		    	//var_dump($xml_data);
-				//$count counts the no. of records in the xml file
+		    		//$count counts the no. of records in the xml file
 				$count = count($xml_data->recordset->record);				
 				if ($count>0)
 				{
@@ -136,8 +124,7 @@
 			}		
 		
 	}
-   
-	function printRecord($outputArray){		
+   	function printRecord($outputArray){		
 		$num_match = count($outputArray);
 		//echo "Number of Matches: ".$num_match;
 		if ($num_match == 0)
@@ -183,8 +170,7 @@
 			
 		}
 				
-	}// end of function
- 
+	}// end of function 
 	//Display detail of each record
 	 function displayDetail($match_array, $i){		 
 	   
@@ -223,8 +209,6 @@
 			 
 	}
 	getData();
-  
- 
 ?>
 </body>
 </html>
