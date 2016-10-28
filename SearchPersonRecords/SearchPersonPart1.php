@@ -38,7 +38,7 @@
              <input type="submit" value="Submit" onclick=" return validatePhone()">
       </form>
 <?php
-	/Get the Phone Number
+	//Get the Phone Number
 	function getPhoneNo () {
         $ph_num = '';
 		if(isset($_POST['phone']))
