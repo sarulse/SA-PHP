@@ -19,11 +19,10 @@
                 alert(mesg);
                 return false;                   
             }              
-    } 
+    	} 
 </script>
 <link rel="stylesheet" type="text/css" href="formstyle.css">
 </head>
-<body>
 <body>
        <form name="personSearch"  method="POST"  accept-charset="UTF-8" target="_self">
            	<fieldset align="center">
@@ -36,8 +35,6 @@
              	<br/>
              	<input type="submit" value="Submit" onclick=" return validatePhone()">
 	</form>
-
-
 <?php	
 	error_reporting(0);
 	//Get the entered Phone Number from the Form
