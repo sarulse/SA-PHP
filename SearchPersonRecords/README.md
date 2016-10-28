@@ -1,4 +1,4 @@
-Project 1:
+Project Name:
 SearchPersonRecords Project:
 
 This project implements a search feature
