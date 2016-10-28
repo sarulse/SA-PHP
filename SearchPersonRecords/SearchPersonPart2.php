@@ -207,7 +207,7 @@
 				while ($row = $result->fetch_assoc()) 
 				{
 					?>
-				    <a href="saveResultsToDB.php?firstname=<?php echo $row["fname"]; ?>&lastname=<?php echo $row["lname"]; ?>&state=<?php echo $row["state"]; ?>" >	
+				    <a href="saveResultsToDB.php?firstname=<?php echo $row["fname"]; ?>&amp;lastname=<?php echo $row["lname"]; ?>&amp;state=<?php echo $row["state"]; ?>" >	
 					<?php
 					echo $row["fname"]." ".$row["minitial"]." ".$row["lname"]." State ".$row["state"]." Phone: ".$row["phone"];
 					echo "<br/>";
