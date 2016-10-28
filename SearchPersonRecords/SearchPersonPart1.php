@@ -126,7 +126,7 @@
 						$lastName =  $xml_data->record[$i]->lastname;
 						$state =  $xml_data->record[$i]->state;
 						?>
-						<a href="displayDetail.php?firstname=<?php echo $givenName; ?>&lastname=<?php echo $lastName; ?>&state=<?php echo $state; ?>" >
+						<a href="displayDetail.php?firstname=<?php echo $givenName; ?>&amp;lastname=<?php echo $lastName; ?>&amp;state=<?php echo $state; ?>" >
 						<?php
 							echo "<h4>";
 							echo $givenName." ".$xml_data->record[$i]->middlename." ".$lastName ;
