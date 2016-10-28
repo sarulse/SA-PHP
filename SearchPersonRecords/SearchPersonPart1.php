@@ -41,7 +41,6 @@
 	/Get the Phone Number
 	function getPhoneNo () {
         $ph_num = '';
-		
 		if(isset($_POST['phone']))
 		{	
 			$phone_num = $_POST['phone'];
@@ -64,11 +63,8 @@
 		catch(Exception $e) {
 				echo "Error in the phone number entered:</br> ".$e->getMessage();
 		}
-		$area_code = substr($phone_number,0,3);
-		//echo "Area Code: ".$area_code."\n";
-		$tel_number = substr($phone_number,3,7);
-		//echo "Tel Number: ".$tel_number."<br>";
-		
+		$area_code = substr($phone_number,0,3);		
+		$tel_number = substr($phone_number,3,7);		
 		// Get cURL resource
 		$curl = curl_init();	
 		$url = $urlParams1.'&areacode=';
