@@ -1,5 +1,5 @@
 <?php
-// Connection parameters
+// Connection parameters for Database
 $dbhostname = "xxxxxxxxxxxxxxxxxxxxxxxresource.com";
 $dbname = "xxxxxxxxxx";
 $dbusername = "xxxxxxxxxxxx";

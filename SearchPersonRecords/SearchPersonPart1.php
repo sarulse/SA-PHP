@@ -3,7 +3,7 @@
 /* 
    Search for a person record using a valid US phone number
    Results of the file can be viewed at 
-   http://www.sarulsel.us/TestProjects/part2test.php	
+   http://www.sarulsel.us/PHPProjects/SearchPersonPart1.php	
 
 */
 ?>

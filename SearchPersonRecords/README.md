@@ -1,5 +1,5 @@
 Project 1:
-SearchPerson Project:
+SearchPersonRecords Project:
 
 This project implements a search feature
 
