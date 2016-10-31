@@ -42,9 +42,10 @@
 		if(isset($_POST['phone']))
 		{	
 			$phone_num = $_POST['phone'];
-			//echo "Entered phone number: ".$ph_number."</br>";
 			//remove special characters from phone_number
 			$ph_num = preg_replace('/[^A-Za-z0-9\$]/', '', $phone_num);
+			if (!(is_numeric($ph_num))) 
+				die ("Entered phone number is not a number\n");	
 						
 		}	
 		return $ph_num;
