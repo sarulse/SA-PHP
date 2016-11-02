@@ -18,7 +18,8 @@ Creates a search form where a user can enter a US phone number to look up a pers
 
 Requests and Responses are saved to a MYSQL table for Part 2 (saveResultsToDB.php)
 
-**_Note**_:
+Note:
+----
 * Connection Parameters should not be exposed to the public folder (connection.php)
 * URL Paramerters with user credentials should not be exposed to the public folder (urlParams.php)
 * User input (phone number) is validated both on the client side (JavaScript) and Server side (PHP)
