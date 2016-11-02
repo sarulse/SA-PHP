@@ -12,7 +12,7 @@
 <head>
 <meta charset="utf-8"/>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-<script src = "validatePhone.js"></script>
+<script src = "js/validatePhone.js"></script>
 <link rel="stylesheet" type="text/css" href="formstyle.css">
 </head>
 <body>
@@ -37,14 +37,12 @@
 			//remove special characters from phone_number
 			$ph_num = preg_replace('/[^A-Za-z0-9\$]/', '', $phone_num);
 			if (!(is_numeric($ph_num))) 
-				die ("Entered phone number is not a number\n");	
-						
+				die ("<p align=\"CENTER\">Entered phone number is not a number</p>");							
 		}
-		else
-        	{            
-               		 die("Please enter a phone number to begin searching\n");
-        	}
-		return $ph_num;
+		else {
+                       	die ("<p align=\"CENTER\">Please enter a phone number in the form to begin searching</p>");
+      		}
+        	return $ph_num;
 	}
 	// Create XML Request
 	function xmlRequest() {		
