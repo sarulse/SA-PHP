@@ -19,6 +19,8 @@
        		text-align:left;
         
   	}
+
+	/* To style form and input elements */
     	form {        
 	   color : blue;
 	   text-align: center;
