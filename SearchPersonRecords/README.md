@@ -37,5 +37,5 @@ Phone numbers can be entered in the following format:
 
  For Example: 
  (i) 3867540455
-(ii) (3867)540456
+(ii) (386)7540456
 (iii) 386-7540457
