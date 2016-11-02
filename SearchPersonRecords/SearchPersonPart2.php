@@ -1,6 +1,6 @@
 <?php
 /*
-  Search for a person record using a valid us phone number and save requests and responses to a MYSQL table
+  Search for a person record using a valid U.S phone number and save requests and responses to a MYSQL table
   Can be viewed at http://sarulsel.us/PHPProjects/SearchPersonPart2.php
 */
 ?>
@@ -41,6 +41,7 @@
 		if(isset($_POST['phone']))
 		{	
 			$phone_num = $_POST['phone'];
+			//Validate phone number
 			//remove special characters from phone_number
 			$ph_num = preg_replace('/[^A-Za-z0-9\$]/', '', $phone_num);
 			if (!(is_numeric($ph_num))) 
