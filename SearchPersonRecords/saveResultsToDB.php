@@ -9,17 +9,6 @@
 <head>
 <meta charset="utf-8"/>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-<style>   
-    h2{
-        text-align:left;
-        color: rgb(0,0,255);
-        margin-left: 50px;
-    }
-    #displayDiv {
-       
-        text-align:left;
-    }
-</style>
 </head>
 <body>
 <?php
