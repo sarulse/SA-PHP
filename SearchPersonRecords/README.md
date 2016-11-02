@@ -1,4 +1,4 @@
-Project Name:
+
 #SearchPersonRecords#
 
 **Purpose:** To implement a search feature using a valid U.S. phone number and then filter the results using full name and state.
