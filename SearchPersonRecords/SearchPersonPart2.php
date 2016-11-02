@@ -1,6 +1,6 @@
 <?php
 /*
-  Save requests and responses to a MYSQL table
+  Search for a person record using a valid us phone number and save requests and responses to a MYSQL table
   Can be viewed at http://sarulsel.us/PHPProjects/SearchPersonPart2.php
 */
 ?>
