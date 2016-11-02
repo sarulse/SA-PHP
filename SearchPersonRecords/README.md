@@ -16,7 +16,7 @@ Creates a search form where a user can enter a US phone number to look up a pers
 
 **Part 2:**(SearchPersonPart2.php)
 * When a record is clicked, a second xml request is created that will display a list of records with the matching name and state.
-  (DisplayDetail.php)
+  (displayDetail.php)
 * When a record is selected from the list, it will display detailed information about the record.
 
 Requests and Responses are saved to a MYSQL table for Part 2 (saveResultsToDB.php)
@@ -39,3 +39,15 @@ Phone numbers can be entered in the following format:
  (i) 3867540455
 (ii) (386)7540456
 (iii) 386-7540457
+
+Sample DB Dumps:
+-----------------
+Sample DB Dumps can be found in the following scripts:
+xml requests are saved to:
+* Person.sql
+* PersonRecords.sql
+
+Responses are saved to:
+* PersonSearchResults.sql
+* PersonRecordSearchResults.sql
+
