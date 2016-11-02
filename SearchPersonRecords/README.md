@@ -3,7 +3,7 @@
 
 **Purpose:** To implement a search feature using a valid U.S. phone number and then filter the results using full name and state.
 
-Creates a search form where a user can enter a US phone number to look up a person
+An user can enter a US phone number to look up a person
 
 **Part 1: **(SearchPersonPart1.php)
 * When submitted, a back end XML request then display the results to the user. 
