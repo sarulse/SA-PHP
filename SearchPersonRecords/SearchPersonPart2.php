@@ -1,6 +1,6 @@
 <?php
 /*
-  saves requests and responses to a MYSQL table
+  Save requests and responses to a MYSQL table
   Can be viewed at http://sarulsel.us/PHPProjects/SearchPersonPart2.php
 */
 ?>
@@ -36,7 +36,6 @@
              	<input type="submit" value="Submit" onclick=" return validatePhone()">
 	</form>
 <?php	
-	error_reporting(0);
 	//Get the entered Phone Number from the Form
 	function getPhoneNo () {
 		if(isset($_POST['phone']))
@@ -54,14 +53,14 @@
 	function xmlRequest() {		
 		include_once("urlParams.php");
 		try {
-				$phone_number = getPhoneNo();
-				// Check number of digits in the phone number
-				$numberOfDigits = strlen($phone_number);	
-				if ($numberOfDigits != 10) 
-					throw new Exception ("Enter a valid US Phone Number Format:\n(123)-4567890\n (or) 1234567890\n (or) 123-456-7890\n (or) 123-4567890");
+			$phone_number = getPhoneNo();
+			// Check number of digits in the phone number
+			$numberOfDigits = strlen($phone_number);	
+			if ($numberOfDigits != 10) 
+				throw new Exception ("Enter a valid US Phone Number Format:\n(123)-4567890\n (or) 1234567890\n (or) 123-456-7890\n (or) 123-4567890");
 		}
 		catch(Exception $e) {
-				echo "Error in the phone number entered:</br> ".$e->getMessage();
+			echo "Error in the phone number entered:</br> ".$e->getMessage();
 		}
 		$area_code = substr($phone_number,0,3);
 		$tel_number = substr($phone_number,3,7);
@@ -152,20 +151,16 @@
 						$timeZone= $connect->real_escape_string($record->timezone);
 						$phoneCarrier= $connect->real_escape_string($record->phone_carrier);
 						$providerType= $connect->real_escape_string($record->provider_type);
-						
-								
+						//Insert values into Person Table
 						$insert = "INSERT INTO Person (fname,minitial,lname,address,city,state,age,dfrom,dto,phone,timezone,phoneCarrier,providerType)
 						VALUES ('$fname','$mname','$lname','$address','$city','$state','$age','$from','$to','$phone','$timeZone','$phoneCarrier','$providerType')";    
-
-						//insert values into the table
+	
 						$query = $connect->query($insert);
 					}
 					if (!$query) {
-							echo "Error: ".$insert. "<br>". $connect->error."Error #".$connect->errno." ".$connect->sqlstate;
+						echo "Error: ".$insert. "<br>". $connect->error."Error #".$connect->errno." ".$connect->sqlstate;
 					} else {
-							echo "<h4>XML Request is saved to database</h4>";
-							
-								 
+						echo "<h4>XML Request is saved to database</h4>";												 
 					}
 					
 				}    
@@ -190,12 +185,10 @@
 				$pattern = '/^\(?(\d{3})\)?[-. ]?(\d{3})[-. ]?(\d{4})$/';
 				$format = '($1) $2-$3';
 				$phone_num = preg_replace($pattern,$format, $phone_number);
-				//echo "Phone number is: ".$phone_num."<br/>";
-				
+				//echo "Phone number is: ".$phone_num."<br/>";				
 				$select = "SELECT fname,minitial,lname,state,phone FROM Person where phone = '$phone_num';"; 
 				$result= $connect->query($select);
-				$num_results = $result->num_rows;
-				
+				$num_results = $result->num_rows;				
 				echo "<h2>"."Search Results</h2>";
 				echo "<h4>Number of matched records: ".$num_results."<br/></h4>";
               			if ($num_results == 0){
@@ -207,23 +200,17 @@
 				while ($row = $result->fetch_assoc()) 
 				{
 					?>
-				    <a href="saveResultsToDB.php?firstname=<?php echo $row["fname"]; ?>&amp;lastname=<?php echo $row["lname"]; ?>&amp;state=<?php echo $row["state"]; ?>" >	
+				    	<a href="saveResultsToDB.php?firstname=<?php echo $row["fname"]; ?>&amp;lastname=<?php echo $row["lname"]; ?>&amp;state=<?php echo $row["state"]; ?>" >	
 					<?php
 					echo $row["fname"]." ".$row["minitial"]." ".$row["lname"]." State ".$row["state"]." Phone: ".$row["phone"];
-					echo "<br/>";
-								 
+					echo "<br/>";								 
 					//Insert values 
 					$insert1 = "INSERT INTO PersonSearchResults (fname,minitial,lname,state,phone)
 						VALUES (?, ?, ?, ?, ?)";    
-					
 					 //Using prepare 
-					 $query1 = $connect->prepare($insert1);    
-					 
-									
+					 $query1 = $connect->prepare($insert1);    									
 					 // bind parameters 
-					 $query1->bind_param("sssss", $firstname, $middleInitial, $lastname,$state,$phone);
-													
-					 
+					 $query1->bind_param("sssss", $firstname, $middleInitial, $lastname,$state,$phone);	
 					 //Set parameters
 					 $firstname = $row["fname"];                
 					 $middleInitial =$row["minitial"];                 
@@ -231,11 +218,9 @@
 					 $state = $row["state"];                 
 					 $phone = $row["phone"];                              
 					 echo "<br/>";
-					 
 					 //Execute
 					 $query1->execute();                 
-					 $query1->close();               
-									 
+					 $query1->close();          									 
 				}
 				?>
 				</a>
@@ -246,17 +231,15 @@
 							echo "<h4>Person search results are saved to database</h4>"."<br/>";								 
 					}
 					echo "</h4>";
-				mysqli_free_result($result);        	
-				$connect->close();
+					mysqli_free_result($result);        	
+					$connect->close();
 			}
 		}
-
 	}
     	$ph_no = getPhoneNo();
     	if (!(empty($ph_no))) {
             printSearchResults();
 	}
-
 ?>
 </body>
 </html>
