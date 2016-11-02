@@ -10,5 +10,4 @@ $connect = new mysqli($dbhostname, $dbusername, $dbpassword,$dbname);
 if ($connect->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 } 
-
 ?> 
