@@ -1,5 +1,5 @@
 <?php
-/* Show Detailed Search Results when a record is selected*/
+/* Show detailed search results when a record is selected from the list of matches */
 ?>
 <!DOCTYPE html>
 <html>
@@ -16,7 +16,6 @@
             });
         });
     });
-        
 </script>
 <link rel="stylesheet" type="text/css" href="formstyle.css">
 </head>
@@ -162,13 +161,10 @@
 				</div>						
 				<?php
 			}  
-			
 		}
-				
 	} 
 	//Display detail of each record
-	 function displayDetail($match_array, $i){		 
-	   
+	 function displayDetail($match_array, $i){		   
 		echo "<br/>";
        		echo "<h4>";
        		echo "\tFirst Name: ".$match_array[$i]->firstname."<br/>";
