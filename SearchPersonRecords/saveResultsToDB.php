@@ -1,8 +1,7 @@
 <?php
-/* save Search Results to a MYSQL table  
- For XML Request 2: 
- saves Person Records to "PersonRecords" table
- saves Search Results to "PersonRecordSearchResults" table 
+/* Save Search requests and responses to a MYSQL table for XML Request 2:
+  save xml requests to "PersonRecords" table
+  save records with matching name and state to "PersonRecordSearchResults" table 
  */
 ?>
 <!DOCTYPE html>
@@ -87,7 +86,6 @@
 		{
 		    	//$count  the no. of records in the xml file
 			$count = count($xml_data->recordset->record);
-
 			if ($count>0)
 			{
 				$resultArray =array();
@@ -136,7 +134,7 @@
 			//check if table creation is successful
 			if (!$connect->query($drop) || !$connect->query($create))
 			{
-						echo "Table creation failed: (" . $connect->errno . ") " . $connect->error;
+				echo "Table creation failed: (" . $connect->errno . ") " . $connect->error;
 			}
 			else
 			{
