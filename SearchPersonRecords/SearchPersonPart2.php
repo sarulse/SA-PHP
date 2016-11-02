@@ -1,6 +1,9 @@
 <?php
 /*
   Search for a person record using a valid U.S phone number and save requests and responses to a MYSQL table
+  For xml request 1:
+  save xml request to "Person" table and 
+  save the records with the matching phone number to "PersonSearchResults" table
   Can be viewed at http://sarulsel.us/PHPProjects/SearchPersonPart2.php
 */
 ?>
