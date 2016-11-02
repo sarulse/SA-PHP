@@ -36,7 +36,7 @@
 			//remove special characters from phone_number
 			$ph_num = preg_replace('/[^A-Za-z0-9\$]/', '', $phone_num);
 			if (!(is_numeric($ph_num))) 
-				die ("Entered phone number is not a number\n");	
+				die ("<p align=\"CENTER\">Entered phone number is not a number</p>");	
 		}
 		else {
                        	die ("<p align=\"CENTER\">Please enter a phone number in the form to begin searching</p>");
