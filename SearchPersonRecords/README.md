@@ -30,3 +30,9 @@ Note:
 * URL Paramerters with user credentials should not be exposed to the public folder (urlParams.php)
 * User input (phone number) is validated both on the client side (JavaScript) and Server side (PHP)
 
+Sample Test inputs:
+-----------------
+ Phone Numbers
+ (i) 3867540455
+(ii) 3867540456
+(iii) 3867540457
