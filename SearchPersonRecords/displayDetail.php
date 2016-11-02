@@ -41,8 +41,7 @@
 		$params = getParams();
 		$fname = $params['fname'];
 		$lname = $params['lname'];
-		$state = $params['state'];
-        
+		$state = $params['state'];        
       		// Get cURL resource
 		$curl = curl_init();
 		$url = $urlParams2.'&firstname=';
@@ -79,8 +78,7 @@
 		$params = getParams();
 		$fname = $params['fname'];
 		$lname = $params['lname'];
-		$state = $params['state'];
-		
+		$state = $params['state'];		
 		if ($xml_data === false) {
     		echo "Failed loading XML: ";
 			foreach(libxml_get_errors() as $error) {
@@ -102,12 +100,10 @@
 							$firstname = $xml_data->recordset->record[$i]->firstname;
 							$lastname = $xml_data->recordset->record[$i]->lastname;
 							$stateName = $xml_data->recordset->record[$i]->state;
-							$cityName = $xml_data->recordset->record[$i]->city;                  
-												
+							$cityName = $xml_data->recordset->record[$i]->city;                
 							$fNameCheck =strcasecmp($fname,$firstname);
 							$lNameCheck= strcasecmp($lname,$lastname);
 							$stateCheck= strcasecmp($state,$stateName);
-							
 							if(($fNameCheck ==0) && ($lNameCheck == 0)&& ($stateCheck == 0))
 							{								
 								$match_found++;
@@ -174,8 +170,8 @@
 	 function displayDetail($match_array, $i){		 
 	   
 		echo "<br/>";
-        echo "<h4>";
-        echo "\tFirst Name: ".$match_array[$i]->firstname."<br/>";
+       		echo "<h4>";
+       		echo "\tFirst Name: ".$match_array[$i]->firstname."<br/>";
 		echo "\tMiddle Initial: ".$match_array[$i]->middlename."<br/>";
 		echo "\tLast Name: ".$match_array[$i]->lastname."<br/>";
 		echo "\tDOB: ". $match_array[$i]->dob."<br/>";
@@ -190,7 +186,7 @@
 		$relatives=$match_array[$i]->relatives;
 		echo "Number of relatives: ".$num_rel."<br/>";
 		for ($j=0; $j<$num_rel; $j++){
-			echo "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
+			echo str_repeat("&nbsp;", 6);
 			echo $relatives->relative[$j]->first_name." ".$relatives->relative[$j]->middle_name." ".$relatives->relative[$j]->last_name." Age: ".$relatives->relative[$j]->age;
 			echo "<br/>";
 		}
@@ -198,14 +194,13 @@
 		$previous=$match_array[$i]->previous_addresses;
 		echo "Number of previous addresses: ".$num_addr."<br/>";
 		for ($k=0; $k<$num_addr; $k++){
-			echo "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
+			echo str_repeat("&nbsp;", 6);
 			echo "City: ".$previous->previous_address[$k]->city." State: ".$previous->previous_address[$k]->state." Zip: ".$previous->previous_address[$k]->zip;
 			echo "<br/>";
 		}
 		echo "\tHome Owner: ". $match_array[$i]->home_owner."<br/>";  
 		echo "<br/>";
-        echo "</h4>";
-			 
+       		echo "</h4>";			 
 	}
 	getData();
 ?>
