@@ -39,7 +39,11 @@
 			if (!(is_numeric($ph_num))) 
 				die ("Entered phone number is not a number\n");	
 						
-		}	
+		}
+		else
+        	{            
+               		 die("Please enter a phone number to begin searching\n");
+        	}
 		return $ph_num;
 	}
 	// Create XML Request
@@ -53,7 +57,7 @@
 				throw new Exception ("Enter a valid US Phone Number Format:\n(123)-4567890\n (or) 1234567890\n (or) 123-456-7890\n (or) 123-4567890");
 		}
 		catch(Exception $e) {
-			echo "Error in the phone number entered:</br> ".$e->getMessage();
+			exit ("Error in the phone number entered:</br> ".$e->getMessage());
 		}
 		$area_code = substr($phone_number,0,3);
 		$tel_number = substr($phone_number,3,7);
