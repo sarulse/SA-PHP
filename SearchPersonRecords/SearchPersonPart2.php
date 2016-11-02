@@ -107,7 +107,6 @@
 			//save data from xml requests to a mysql table
 			// To connect to the database include connection parameters
 			include_once('connection.php');
-			
 			//Check if connected to database
 			if ($connect)        {
 				//create MYSQL table            
