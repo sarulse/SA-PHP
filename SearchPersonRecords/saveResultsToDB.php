@@ -28,12 +28,10 @@
 		$name = array();
 		$fname = $_GET['firstname'];
 		$lname =$_GET['lastname'];
-		$state= $_GET['state'];
-		
+		$state= $_GET['state'];		
 		$name['fname']= $fname;
 		$name['lname']= $lname;
 		$name['state']= $state;
-		
 		return $name;		
 	}
 	//Send Request
@@ -60,7 +58,7 @@
 		));
 		// Send the request & save response to $data
 		$data = curl_exec($curl);
-        if(!$data){
+       		if(!$data){
 			//die('Error: "' . curl_error($curl) . '" - Code: ' . curl_errno($curl));
 			exit ("Could not connect to the server<br/>");
 		}
@@ -79,7 +77,6 @@
 		$fname = $params['fname'];
 		$lname = $params['lname'];
 		$state = $params['state'];
-
 		if ($xml_data === false) {
                 echo "Failed loading XML: ";
     			foreach(libxml_get_errors() as $error) {
@@ -88,23 +85,23 @@
 		}
 		else
 		{
-			    //$count  the no. of records in the xml file
-				$count = count($xml_data->recordset->record);
-				
-				if ($count>0)
-				{
-					$resultArray =array();
-					for ($i=0; $i<$count; $i++)
-					{                   
-							
-						$recordset = $xml_data->recordset;
-						$found_record = $recordset->record[$i];
-						array_push($resultArray,$found_record);                 
-							 
-				   }         						
-					//call saveRecords to save all Records to Database()
-					saveRecords($resultArray);
-				 }
+		    	//$count  the no. of records in the xml file
+			$count = count($xml_data->recordset->record);
+
+			if ($count>0)
+			{
+				$resultArray =array();
+				for ($i=0; $i<$count; $i++)
+				{                   
+
+					$recordset = $xml_data->recordset;
+					$found_record = $recordset->record[$i];
+					array_push($resultArray,$found_record);                 
+
+			   }         						
+				//call saveRecords to save all Records to Database()
+				saveRecords($resultArray);
+			 }
 		    }
 	}  
 	//save data from requests to a DB table
@@ -193,15 +190,14 @@
 					
 					
 					//Insert without prepare                
-					/*
-                    $insert = "INSERT INTO PersonRecords (fname,minitial,lname,dob,age,address,city,state,zip,reportDate,phone,relatives,previousAddresses,homeOwner)
+					/*$insert = "INSERT INTO PersonRecords (fname,minitial,lname,dob,age,address,city,state,zip,reportDate,phone,relatives,previousAddresses,homeOwner)
 							   VALUES ('$fname','$mname','$lname','$dob','$age','$address','$city','$state','$zip','$reportDate','$phone','$relativeValues','$addressValues','$homeOwner')";    
 
 					//insert values into the table
 					$query1 = $connect->query($insert);
 					*/                    
-                    //Insert using prepare 
-    				$insert = "INSERT INTO PersonRecords (fname,minitial,lname,dob,age,address,city,state,zip,reportDate,phone,relatives,previousAddresses,homeOwner)
+                   			 //Insert using prepare 
+    					$insert = "INSERT INTO PersonRecords (fname,minitial,lname,dob,age,address,city,state,zip,reportDate,phone,relatives,previousAddresses,homeOwner)
 							   VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 					
 					 //Using prepare 
@@ -266,9 +262,9 @@
 				$result= $conn->query($select);
 				$num_results = $result->num_rows;            
 				echo "<h3>Number of Matching Records: $num_results</h3>";
-                if ($num_results == 0) {
-                    echo "No Records are saved to the database<br/>";
-                }
+               			if ($num_results == 0) {
+                   		 	echo "No Records are saved to the database<br/>";
+               			}
 				echo "--------------------------------------------------------------------<br/>";
 				$personArray= array();			
 				$counter = 0;
@@ -322,15 +318,12 @@
 						echo "Error: " . $query2 . "<br>" . $conn->error;				
 					   
 				} 					   
-			   mysqli_free_result($result);  			
-			   $conn->close();
-				
+			  	mysqli_free_result($result);  			
+			   	$conn->close();
 			}
 		} 
 	}
-
 	getData();
- 
-?>
+ ?>
 </body>
 </html>
