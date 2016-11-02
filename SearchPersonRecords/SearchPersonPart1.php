@@ -3,7 +3,6 @@
    Search for a person record using a valid U.S. phone number
    Results of the file can be viewed at 
    http://www.sarulsel.us/PHPProjects/SearchPersonPart1.php	
-
 */
 ?>
 <!DOCTYPE html>
@@ -50,6 +49,9 @@
 			if (!(is_numeric($ph_num))) 
 				die ("Entered phone number is not a number\n");	
 		}
+		else {
+                       	die ("<p align=\"CENTER\">Please enter a phone number in the form to begin search</p>");
+      		}
 		return $ph_num;		
 	}
 	// Create XML Request
