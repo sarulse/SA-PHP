@@ -52,8 +52,7 @@
 		return $ph_num;		
 	}
 	// Create XML Request
-	function xmlRequest() {
-		
+	function xmlRequest() {		
 		include_once("urlParams.php");		
 		try {
 				$phone_number = getPhoneNo();
@@ -73,7 +72,6 @@
 		$url.= $area_code;
 		$url.= '&phone=';
 		$url.= $tel_number;
-		
 		// Set some options - 
 		curl_setopt_array($curl, array(
 					CURLOPT_RETURNTRANSFER => 1,
@@ -96,8 +94,7 @@
 	//Print Search Results
 	function printSearchResults() {
 		$phone_number = getPhoneNo();
-       	$xml_data = xmlRequest();
-
+       		$xml_data = xmlRequest();
 		if ($xml_data === false) {
 			echo "Failed loading XML: ";
 			foreach(libxml_get_errors() as $error) {
