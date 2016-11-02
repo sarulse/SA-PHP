@@ -10,7 +10,7 @@
 <head>
 <meta charset="utf-8"/>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-<script src = "validatePhone.js"></script>
+<script src = "js/validatePhone.js"></script>
 <link rel="stylesheet" type="text/css" href="formstyle.css">
 </head>
 <body>
@@ -39,7 +39,7 @@
 				die ("Entered phone number is not a number\n");	
 		}
 		else {
-                       	die ("<p align=\"CENTER\">Please enter a phone number in the form to begin search</p>");
+                       	die ("<p align=\"CENTER\">Please enter a phone number in the form to begin searching</p>");
       		}
 		return $ph_num;		
 	}
@@ -54,7 +54,7 @@
 					throw new Exception ("Enter a valid US Phone Number Format:\n(123)-4567890\n (or) 1234567890\n (or) 123-456-7890\n (or) 123-4567890");
 		}
 		catch(Exception $e) {
-				echo "Error in the phone number entered:</br> ".$e->getMessage();
+				exit("Error in the phone number entered:</br> ".$e->getMessage());
 		}
 		$area_code = substr($phone_number,0,3);		
 		$tel_number = substr($phone_number,3,7);		
