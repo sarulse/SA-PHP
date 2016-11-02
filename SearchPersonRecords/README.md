@@ -5,7 +5,7 @@
 
 Creates a search form where a user can enter a US phone number to look up a person
 
-**Part 1:**(SearchPersonPart1.php)
+**Part 1: **(SearchPersonPart1.php)
 * When submitted, a back end XML request then display the results to the user. 
 * If no records are found, that information is displayed to the user.
 * If there is a problem with the XML server a notice is sent to the user. 
@@ -14,7 +14,7 @@ Creates a search form where a user can enter a US phone number to look up a pers
 [View Part 1](http://sarulsel.us/PHPProjects/SearchPersonPart1.php)
 
 
-**Part 2:**(SearchPersonPart2.php)
+**Part 2: **(SearchPersonPart2.php)
 * When a record is clicked, a second xml request is created that will display a list of records with the matching name and state.
   (displayDetail.php)
 * When a record is selected from the list, it will display detailed information about the record.
