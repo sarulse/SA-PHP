@@ -13,7 +13,7 @@
 <meta charset="utf-8"/>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <script src = "js/validatePhone.js"></script>
-<link rel="stylesheet" type="text/css" href="formstyle.css">
+<link rel="stylesheet" type="text/css" href="css/formstyle.css">
 </head>
 <body>
        <form name="personSearch"  method="POST"  accept-charset="UTF-8" target="_self">
