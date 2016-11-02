@@ -32,7 +32,10 @@ Note:
 
 Sample Test inputs:
 -----------------
- Phone Numbers
+Phone numbers can be entered in the following format:
+(123)-4567890 (or) 1234567890 (or) 123-456-7890 (or) 123-4567890
+
+ For Example: 
  (i) 3867540455
-(ii) 3867540456
-(iii) 3867540457
+(ii) (3867)540456
+(iii) 386-7540457
