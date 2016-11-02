@@ -10,6 +10,7 @@ Creates a search form where a user can enter a US phone number to look up a pers
 * If no records are found, that information is displayed to the user.
 * If there is a problem with the XML server a notice is sent to the user. 
 * If there are multiple results, clickable full name and state of each record is displayed. 
+ [View Part 1]: http://sarulsel.us/PHPProjects/SearchPersonPart1.php
 
 **Part 2:**(SearchPersonPart2.php)
 * When a record is clicked, a second xml request is created that will display a list of records with the matching name and state.
