@@ -9,8 +9,6 @@ An user can enter a US phone number to look up a person
 * If there is a problem with the XML server a notice is sent to the user. 
 * If there are multiple results, clickable full name and state of each record is displayed. 
 
-Part 1:
-
 
 **Part 2:** (SearchPersonPart2.php)
 * When a record is clicked, a second xml request is created that will display a list of records with the matching name and state.
@@ -19,7 +17,6 @@ Part 1:
 
 Requests and Responses are saved to a MYSQL table for Part 2 (saveResultsToDB.php)
 
-Part 2:
 
 Note:
 ----
