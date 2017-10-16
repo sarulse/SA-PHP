@@ -1,6 +1,4 @@
 
-#SearchPersonRecords#
-
 **Purpose:** To implement a search feature using a valid U.S. phone number and then filter the results using full name and state.
 
 An user can enter a US phone number to look up a person
@@ -11,7 +9,7 @@ An user can enter a US phone number to look up a person
 * If there is a problem with the XML server a notice is sent to the user. 
 * If there are multiple results, clickable full name and state of each record is displayed. 
 
-[View Part 1](http://sarulsel.us/PHPProjects/SearchPersonPart1.php)
+Part 1:
 
 
 **Part 2:** (SearchPersonPart2.php)
@@ -21,8 +19,7 @@ An user can enter a US phone number to look up a person
 
 Requests and Responses are saved to a MYSQL table for Part 2 (saveResultsToDB.php)
 
-
-[View Part 2](http://sarulsel.us/PHPProjects/SearchPersonPart2.php)
+Part 2:
 
 Note:
 ----
